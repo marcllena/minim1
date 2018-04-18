@@ -1,0 +1,158 @@
+{
+	"id": "2bc29e9a-8a80-47d1-810e-3a6792aa5c6a",
+	"name": "Minim1",
+	"description": "Colecció Postman per probar el Servei Rest del minim1 de DSA.",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"ac67def8-5f5c-414c-a55c-e0f90dd4d24d",
+		"f42a8f67-deda-4e64-bc47-a14a14fa5d89",
+		"431eb982-6ab7-4ab2-bb6b-fd7fa4bfaeb5",
+		"a9de24f7-3180-4a5d-b2c2-dbbfe6c02dc3",
+		"7823ae26-97f5-489b-b76c-87bc02b6885d",
+		"a3114f84-49cd-48aa-bb90-ddeffa50a289",
+		"e699f65f-cc5a-4392-a1fd-d9b608800ee3"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "431eb982-6ab7-4ab2-bb6b-fd7fa4bfaeb5",
+			"name": "http://localhost:8080/myapp/service/instituts",
+			"url": "http://localhost:8080/myapp/service/instituts",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "7823ae26-97f5-489b-b76c-87bc02b6885d",
+			"name": "http://localhost:8080/myapp/service/procesar",
+			"url": "http://localhost:8080/myapp/service/procesar",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "a3114f84-49cd-48aa-bb90-ddeffa50a289",
+			"name": "http://localhost:8080/myapp/service/operacions/UPC",
+			"url": "http://localhost:8080/myapp/service/operacions/UPC",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "a9de24f7-3180-4a5d-b2c2-dbbfe6c02dc3",
+			"name": "http://localhost:8080/myapp/service/operacio/Marc/UPC",
+			"url": "http://localhost:8080/myapp/service/operacio/Marc/UPC",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"expresio\": \"2 4 +\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "ac67def8-5f5c-414c-a55c-e0f90dd4d24d",
+			"name": "http://localhost:8080/myapp/service/nouinsti",
+			"url": "http://localhost:8080/myapp/service/nouinsti",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"nom\": \"UPC\",\n    \"alumnes\": [\n        {\n            \"nom\": \"Marc\",\n            \"operacions\": []\n        }\n    ]\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "e699f65f-cc5a-4392-a1fd-d9b608800ee3",
+			"name": "http://localhost:8080/myapp/service/operacions/Marc/UPC",
+			"url": "http://localhost:8080/myapp/service/operacions/Marc/UPC",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "f42a8f67-deda-4e64-bc47-a14a14fa5d89",
+			"name": "http://localhost:8080/myapp/service/nouinsti",
+			"url": "http://localhost:8080/myapp/service/nouinsti",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n        \"nom\": \"EETAC\",\n        \"alumnes\": [\n            {\n                \"nom\": \"Pedro\",\n                \"operacions\": [\n                    {\n                    }\n                ]\n            },\n            {\n                \"nom\": \"Juan\",\n                \"operacions\": [\n                    {\n                    }\n                ]\n            }\n        ]\n    }",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
