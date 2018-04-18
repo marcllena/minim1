@@ -10,7 +10,7 @@ public class TestReversePolishNotation {
 
     @org.junit.Test
     public void test1(){
-        Operacio operacio= new Operacio("2x0");
+        Operacio operacio= new Operacio("5 1 2 + 4 * + 3 -");
         ReversePolishNotationImpl reversePolish = new ReversePolishNotationImpl();
         int res = reversePolish.procesar(operacio);
         assertEquals(0,res);
