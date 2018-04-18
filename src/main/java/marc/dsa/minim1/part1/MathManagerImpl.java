@@ -13,12 +13,12 @@ public class MathManagerImpl implements MathManager {
     private Queue<Operacio> operacions;
 
     //2.3 Ens demanen que la fachada s'implementin com un Singleton
-    private static ProductManagerImpl ourInstance;
+    private static MathManagerImpl ourInstance;
 
 
-    public static ProductManagerImpl getInstance() {
+    public static MathManagerImpl getInstance() {
         if (ourInstance==null)
-            ourInstance = new ProductManagerImpl();
+            ourInstance = new MathManagerImpl();
         return ourInstance;
     }
 
@@ -28,20 +28,21 @@ public class MathManagerImpl implements MathManager {
     }
 
     public static void clear(){
-        ourInstance = new ProductManagerImpl();
+        ourInstance = new MathManagerImpl();
     }
     //2.4 Ens demane mostrar la informació amb Log4J
-    final static Logger log = Logger.getLogger(ProductManagerImpl.class);
+    final static Logger log = Logger.getLogger(MathManagerImpl.class);
 
     //Apart de les funcions demanades implemento:
     public void afagirInstitut(Institut institut)
     {
+        log.info("Institut afagit "+institut.toString());
         instituts.add(institut);
     }
 
 
     public int buscarInstitut(String nom){
-        log.info("Petició de Buscar Institut"+nom);
+        log.info("Petició de Buscar Institut "+nom);
         int i=0;
         boolean encontrado=false;
         while(!encontrado&&i<instituts.size()){
@@ -51,12 +52,17 @@ public class MathManagerImpl implements MathManager {
                 i++;
 
         }
-        if(encontrado)
+        if(encontrado) {
+            log.info("Institut trobat");
             return i;
-        else return -1;
+        }
+        else {
+            log.info("Institut no trobat");
+            return -1;
+        }
     }
     public Alumne buscarAlumne(String nom,String institut){
-        log.info("Peticio de buscar de"+nom+"del Institut"+institut);
+        log.info("Peticio de buscar "+nom+" del Institut "+institut);
         int ins = buscarInstitut(institut);
         if(ins!=-1) {
             List<Alumne> alumnes = instituts.get(ins).getAlumnes();
@@ -69,8 +75,10 @@ public class MathManagerImpl implements MathManager {
                     i++;
 
             }
-            if (encontrado)
+            if (encontrado) {
+                log.info("Alumne trobat");
                 return alumnes.get(i);
+            }
             else return null;
         }
         else return null;
@@ -78,7 +86,7 @@ public class MathManagerImpl implements MathManager {
 
     //Operacions demanades
     public int realitzarOperacio(Operacio operacio,String alumne,String institut){
-        log.info("Petició de Operacio de "+alumne+" Operacio"+operacio.toString());
+        log.info("Petició de Operacio de "+alumne+" Operacio "+operacio.toString());
         Alumne user = buscarAlumne(alumne,institut);
         if(user!=null) {
             operacions.add(operacio);
@@ -96,8 +104,9 @@ public class MathManagerImpl implements MathManager {
             Operacio operacio = operacions.poll();
             int res;
             if(operacio!=null){
-                res = operacio.procesar();
-                log.info("Procesem la primera operacio. Resultat"+res);
+                ReversePolishNotationImpl servei= new ReversePolishNotationImpl();
+                res = servei.procesar(operacio);
+                log.info("Primera Operacio Procesada. Resultat "+res);
 
             }
             else{
@@ -108,20 +117,20 @@ public class MathManagerImpl implements MathManager {
 
     }
     public List<Operacio> llistatOperacionsInstitut(String institut){
-        log.info("Llistat de operacions per institut de"+institut);
+        log.info("Llistat de operacions per institut de "+institut);
         int ins = buscarInstitut(institut);
         if(ins!=-1) {
             List<Operacio> operacions= instituts.get(ins).operacionsAlumnes();
-            log.info("Resultat"+operacions.toString());
+            log.info("Resultat "+operacions.toString());
             return operacions;
         }
         else{
-            log.error("No s'ha trobat el institut");
+            log.error("No s'ha trobat l'institut");
             return null;
         }
     }
     public List<Operacio> llistatOperacionsAlumne(String alumne,String institut){
-        log.info("Llistat de operacions per institut de"+alumne+"del Institut"+institut);
+        log.info("Llistat de operacions per institut de "+alumne+"del Institut "+institut);
         Alumne user = buscarAlumne(alumne,institut);
         if(user!=null) {
             List<Operacio> operacions= user.getOperacions();
@@ -129,7 +138,7 @@ public class MathManagerImpl implements MathManager {
             return operacions;
         }
         else{
-            log.fatal("El alumne no existeix");
+            log.error("El alumne no existeix");
             return null;
         }
     }

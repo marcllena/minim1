@@ -7,6 +7,7 @@ public class Institut {
     String nom;
     List<Alumne> alumnes;
 
+
     public Institut(String nom, List<Alumne> alumnes) {
         this.nom = nom;
         this.alumnes = alumnes;
@@ -40,5 +41,13 @@ public class Institut {
             }
         }
         return operacions;
+    }
+
+    @Override
+    public String toString() {
+        return "Institut{" +
+                "nom='" + nom + '\'' +
+                ", alumnes=" + alumnes +
+                '}';
     }
 }

@@ -1,0 +1,7 @@
+Para implementar todas estas funcionalidades en una base de datos, yo emplearia 3 tablas: Alumnes,Instituts, i Operacio
+- En la tabla de Alumnes, tendriamos el nombre, i la relacion hacia las operaciones hechos por este alumno.
+    Seria una relación 1/N, ya que un alumno tendra varios operaciones, y cada operacion un único alumno.
+- En la tabla de operaciones,tendremos por cada operacion su expresion.
+    Existiria una relación al alumno que la ha hecho (1/N como hemos dicho
+- En la tabla de Instituts, tendriamos el nombre del instuto, i la relacion hacia sus alumnos.
+    Seria una relación 1/N, ya que un instituto tendra varios alumnos, y cada alumno un único instituto.

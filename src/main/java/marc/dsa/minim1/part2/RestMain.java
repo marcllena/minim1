@@ -13,7 +13,7 @@ import java.net.URI;
  *
  */
 //Engega el Servidor REST a la URL http://localhost:8080/myapp/
-public class Main {
+public class RestMain {
     // Base URI the Grizzly HTTP server will listen on
     public static final String BASE_URI = "http://localhost:8080/myapp/";
 
@@ -24,7 +24,7 @@ public class Main {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in edu.upc.dsa package
-        final ResourceConfig rc = new ResourceConfig().packages("marc.dsa");
+        final ResourceConfig rc = new ResourceConfig().packages("marc.dsa.minim1");
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI

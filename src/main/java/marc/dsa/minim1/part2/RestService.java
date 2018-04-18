@@ -1,91 +1,84 @@
 package marc.dsa.minim1.part2;
 
+import marc.dsa.minim1.part1.*;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.LinkedList;
+import java.util.List;
 
 
 @Path("service")
 public class RestService {
-    //Per crear els JSON rapidament creo;
+    //Per crear els JSON rapidament ;
     @GET
     @Path("/proba")
     @Produces(MediaType.APPLICATION_JSON)
-    public Object proba()
+    public Operacio proba()
     {
-        Object a= new Object();
-        return a;
+        Operacio op= new Operacio("2X2");
+        return op;
     }
-/*
-    ProductManagerImpl productManager;
+
+    MathManagerImpl mathManager;
 
     public RestService(){
-        productManager = productManager.getInstance();
+        mathManager = mathManager.getInstance();
     }
 
     //Apart de les funcions demanades implemento:
     @POST
-    @Path("/nouprod")
+    @Path("/nouinsti")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response afagirProducte(Producto producto)
+    public Response afagirInstitut(Institut institut)
     {
-        productManager.afagirProducte(producto);
+        mathManager.afagirInstitut(institut);
         return Response.status(200).build();
     }
 
-    @GET
-    @Path("/nou/{nom}")
-    @Produces(MediaType.TEXT_HTML)
-    public Response afagirUsuari(@PathParam("nom") String nom)
-    {
-        productManager.afagirUsuari(new Usuario(nom));
-        return Response.status(200).build();
-    }
-
-    //Funcions Demanades
-    @GET
-    @Path("/prodpreu")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Producto> llistatProductesPreu(){
-        return productManager.llistatProductesPreu();
-    }
-
-    @GET
-    @Path("/prodventes")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Producto> llistatProductesVentes(){
-        return productManager.llistatProductesVentes();
-    }
-
+    //Operacions demanades
     @POST
-    @Path("/pedido/{nom}")
+    @Path("/operacio/{nom}/{institut}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response realitzarPedido(Comanda[] comandes,@PathParam("nom") String nom){
-        int res =productManager.realitzarPedido(comandes,nom);
+    public Response realitzarPedido(Operacio operacio,@PathParam("nom") String nom,@PathParam("institut") String institut){
+        int res = mathManager.realitzarOperacio(operacio,nom,institut);
         if(res==0)
             return Response.status(200).build();
         else
-            return Response.status(204).entity("No existeix el producte").build();
+            return Response.status(204).entity("No existeix el alumne").build();
     }
 
     @GET
-    @Path("/servir")
+    @Path("/procesar")
     @Produces(MediaType.TEXT_HTML)
     public Response servirPedido(){
-        int res = productManager.servirPedido();
-        switch (res){
-            case 0: return Response.status(200).build();
-            case -1: return Response.status(204).entity("No existeix el producte").build();
-            default: return Response.status(204).entity("Cap pedido per servir").build();
-        }
+        int res = mathManager.procesarOperacio();
+        return Response.status(200).entity(String.valueOf(res)).build();
+    }
+
+
+    @GET
+    @Path("/operacions/{institut}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Operacio> llistatOperacionsInstitut(@PathParam("institut") String institut){
+        return mathManager.llistatOperacionsInstitut(institut);
     }
 
     @GET
-    @Path("/llistapedidos/{nom}")
+    @Path("/operacions/{nom}/{institut}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Comanda>  llistatPedidosRealitzats(@PathParam("nom") String nom){
-        return productManager.llistatPedidosRealitzats(nom);
+    public List<Operacio> llistatOperacionsAlumne(@PathParam("nom") String nom,@PathParam("institut") String institut){
+        return mathManager.llistatOperacionsAlumne(nom,institut);
     }
-*/
+
+    @GET
+    @Path("/instituts")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Institut> llistatInstituts(){
+        return mathManager.llistatInstituts();
+    }
 }
