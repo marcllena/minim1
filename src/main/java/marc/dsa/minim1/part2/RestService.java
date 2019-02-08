@@ -52,6 +52,7 @@ public class RestService {
             return Response.status(204).entity("No existeix el alumne").build();
     }
 
+    //http://localhost:8080/myapp/service/procesar
     @GET
     @Path("/procesar")
     @Produces(MediaType.TEXT_HTML)
@@ -60,7 +61,7 @@ public class RestService {
         return Response.status(200).entity(String.valueOf(res)).build();
     }
 
-
+    //http://localhost:8080/myapp/service/procesar
     @GET
     @Path("/operacions/{institut}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -68,6 +69,7 @@ public class RestService {
         return mathManager.llistatOperacionsInstitut(institut);
     }
 
+    //http://localhost:8080/myapp/service/operacions/Marc/UPC
     @GET
     @Path("/operacions/{nom}/{institut}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -75,6 +77,7 @@ public class RestService {
         return mathManager.llistatOperacionsAlumne(nom,institut);
     }
 
+    //http://localhost:8080/myapp/service/instituts
     @GET
     @Path("/instituts")
     @Produces(MediaType.APPLICATION_JSON)

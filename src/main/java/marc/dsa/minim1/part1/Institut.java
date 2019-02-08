@@ -36,6 +36,7 @@ public class Institut {
         List<Operacio> operacions= new LinkedList<Operacio>();
         for(int i=0;i<alumnes.size();i++){
             List<Operacio> operacionsAlumne=alumnes.get(i).getOperacions();
+            if(operacionsAlumne!=null)
             for(int j=0; j<operacionsAlumne.size();j++){
                 operacions.add(operacionsAlumne.get(j));
             }
